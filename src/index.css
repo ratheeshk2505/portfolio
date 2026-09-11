@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --surface: #f5f6f8;
+  --surface-alt: #eef0f3;
+  --text-primary: #14171c;
+  --text-secondary: #5c6470;
+  --border: #e4e7eb;
+  --accent: #a8672a;
+  --accent-soft: #f2e6d5;
+}
+
+.dark {
+  --background: #10131a;
+  --surface: #161b22;
+  --surface-alt: #1c222b;
+  --text-primary: #e9ebef;
+  --text-secondary: #8b93a1;
+  --border: #262c36;
+  --accent: #d69a55;
+  --accent-soft: #2a2013;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+html,
+body {
+  background-color: var(--background);
+  color: var(--text-primary);
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-image:
+    radial-gradient(ellipse 60% 45% at 12% -8%, var(--accent-soft) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 100% 12%, var(--surface-alt) 0%, transparent 55%),
+    radial-gradient(circle at 1px 1px, var(--border) 1px, transparent 0);
+  background-size: auto, auto, 28px 28px;
+  background-repeat: no-repeat, no-repeat, repeat;
+  background-attachment: fixed, fixed, fixed;
+}
+
+/* 3D surface: gives cards a raised, layered feel without heavy drop shadows */
+.surface-3d {
+  transform-style: preserve-3d;
+  box-shadow:
+    0 1px 2px rgba(20, 23, 28, 0.03),
+    0 10px 24px -14px rgba(20, 23, 28, 0.18),
+    0 1px 0 0 var(--border) inset;
+}
+
+.dark .surface-3d {
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.25),
+    0 16px 32px -16px rgba(0, 0, 0, 0.55),
+    0 1px 0 0 var(--border) inset;
+}
+
+.perspective-container {
+  perspective: 1200px;
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate3d(1, 1, 0, 0deg); }
+  50% { transform: translate3d(0, -14px, 0) rotate3d(1, 1, 0, 6deg); }
+}
+
+@keyframes float-slower {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate3d(0, 1, 1, 0deg); }
+  50% { transform: translate3d(0, 12px, 0) rotate3d(0, 1, 1, -8deg); }
+}
+
+.animate-float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+.animate-float-slower {
+  animation: float-slower 9s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-slow,
+  .animate-float-slower {
+    animation: none;
+  }
+}
+
+::selection {
+  background-color: var(--accent-soft);
+  color: var(--text-primary);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.container-px {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container-px {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
