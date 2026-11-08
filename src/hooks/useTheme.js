@@ -4,7 +4,12 @@ const STORAGE_KEY = "portfolio-theme";
 
 function getInitialTheme() {
   if (typeof window === "undefined") return "light";
-  const stored = window.localStorage.getItem(STORAGE_KEY);
+  let stored = null;
+  try {
+    stored = window.localStorage.getItem(STORAGE_KEY);
+  } catch {
+    // Storage can be unavailable (privacy mode, blocked site data).
+  }
   if (stored === "light" || stored === "dark") return stored;
   return window.matchMedia("(prefers-color-scheme: dark)").matches
     ? "dark"
@@ -21,7 +26,11 @@ export function useTheme() {
     } else {
       root.classList.remove("dark");
     }
-    window.localStorage.setItem(STORAGE_KEY, theme);
+    try {
+      window.localStorage.setItem(STORAGE_KEY, theme);
+    } catch {
+      // Ignore: theme still applies for this visit.
+    }
   }, [theme]);
 
   const toggleTheme = () => {

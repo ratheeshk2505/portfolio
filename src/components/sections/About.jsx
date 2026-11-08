@@ -38,9 +38,9 @@ function About() {
             className="space-y-4 text-text-secondary leading-relaxed"
           >
             <p>
-              I'm a Senior Software Engineer with 3.8+ years in frontend
-              development, specializing in Angular with secondary depth in
-              React. Most of my work has been building scalable,
+              I'm a Senior Software Engineer with several years of
+              professional frontend experience, specializing in Angular and
+              React, and now extending into React Native and NestJS. Most of my work has been building scalable,
               high-performance web applications — from role-based dashboards
               to enterprise assessment platforms — with a strong focus on
               TypeScript, RxJS, and REST API integration.

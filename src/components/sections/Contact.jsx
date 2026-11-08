@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import Container from "../common/Container";
 import SectionTitle from "../common/SectionTitle";
 import Button from "../common/Button";
-import { LinkedinIcon } from "../common/BrandIcons";
+import { GithubIcon, LinkedinIcon } from "../common/BrandIcons";
 
 const contactLinks = [
   { label: "ratheeshk2505@gmail.com", href: "mailto:ratheeshk2505@gmail.com", icon: Mail },
-  { label: "8547854804", href: "tel:+918547854804", icon: Phone },
   { label: "linkedin.com/in/ratheeshk2505", href: "https://linkedin.com/in/ratheeshk2505", icon: LinkedinIcon },
+  { label: "github.com/ratheeshk2505", href: "https://github.com/ratheeshk2505", icon: GithubIcon },
   { label: "Kottayam, Kerala", href: undefined, icon: MapPin },
 ];
 
@@ -128,7 +128,11 @@ function Contact() {
             </Button>
             {sent && (
               <p className="text-sm text-text-secondary" role="status">
-                Opening your email client to send this along.
+                Opening your email app. If nothing opened, email me directly at{" "}
+                <a href="mailto:ratheeshk2505@gmail.com" className="text-accent underline">
+                  ratheeshk2505@gmail.com
+                </a>
+                .
               </p>
             )}
           </motion.form>

@@ -32,10 +32,14 @@ function Hero() {
             >
               Hi, I'm
             </motion.p>
-            <h1 className="mt-3 font-display text-5xl leading-[1.05] text-text-primary sm:text-6xl md:text-7xl">
+            <h1
+              aria-label="Ratheesh K"
+              className="mt-3 font-display text-5xl leading-[1.05] text-text-primary sm:text-6xl md:text-7xl"
+            >
               {"Ratheesh K".split("").map((char, index) => (
                 <motion.span
                   key={index}
+                  aria-hidden="true"
                   initial={{ opacity: 0, y: 18 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
@@ -55,8 +59,8 @@ function Hero() {
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.55 }}
               className="mt-6 max-w-lg text-lg text-text-secondary leading-relaxed"
             >
-              Senior Software Engineer with 3.8+ years in frontend
-              development, specializing in Angular and React. I build
+              Senior Software Engineer specializing in Angular and React,
+              with hands-on experience in React Native and NestJS. I build
               scalable, high-performance web applications with a strong
               focus on clean architecture and usability.
             </motion.p>
@@ -135,7 +139,7 @@ function Hero() {
                 </svg>
                 <div className="absolute top-[15%] left-[12.5%] w-[28%] aspect-square rounded-[10px] overflow-hidden">
                   <img
-                    src="/Ratheesh-K.jpg"
+                    src={`${import.meta.env.BASE_URL}Ratheesh-K.jpg`}
                     alt="Ratheesh K"
                     className="h-full w-full object-cover"
                   />

@@ -1,11 +1,11 @@
-import { ArrowUp, Mail, Phone } from "lucide-react";
+import { ArrowUp, Mail } from "lucide-react";
 import Container from "../common/Container";
-import { LinkedinIcon } from "../common/BrandIcons";
+import { GithubIcon, LinkedinIcon } from "../common/BrandIcons";
 
 const socials = [
   { label: "Email", href: "mailto:ratheeshk2505@gmail.com", icon: Mail },
-  { label: "Phone", href: "tel:+918547854804", icon: Phone },
   { label: "LinkedIn", href: "https://linkedin.com/in/ratheeshk2505", icon: LinkedinIcon },
+  { label: "GitHub", href: "https://github.com/ratheeshk2505", icon: GithubIcon },
 ];
 
 function Footer() {

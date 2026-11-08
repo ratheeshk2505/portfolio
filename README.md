@@ -11,7 +11,7 @@ A modern, responsive personal portfolio built with React, Vite, Tailwind CSS, an
 
 ## Getting started
 
-Requires Node.js 18+.
+Requires Node.js 22+ (Vite 8 needs ^20.19 or >=22.12).
 
 ```bash
 npm install
@@ -78,4 +78,4 @@ The selected theme is stored in `localStorage` under the key `portfolio-theme` a
 
 ## Deploying
 
-The `npm run build` output in `dist/` is static and can be deployed to any static host (Vercel, Netlify, GitHub Pages, Cloudflare Pages, etc.).
+The `npm run build` output in `dist/` is static and is deployed to GitHub Pages (https://ratheeshk2505.github.io/portfolio/) by `.github/workflows/deploy.yml` on every push to `develop`. Because the site lives under `/portfolio/`, reference files in `public/` from JSX with `import.meta.env.BASE_URL` (e.g. `${import.meta.env.BASE_URL}Ratheesh-K.jpg`), not a leading `/`.

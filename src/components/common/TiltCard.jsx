@@ -1,4 +1,10 @@
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 
 function TiltCard({
   children,
@@ -19,7 +25,10 @@ function TiltCard({
   const glareX = useTransform(springX, [-0.5, 0.5], ["0%", "100%"]);
   const glareY = useTransform(springY, [-0.5, 0.5], ["0%", "100%"]);
 
+  const reduceMotion = useReducedMotion();
+
   const handleMouseMove = (event) => {
+    if (reduceMotion) return;
     const bounds = event.currentTarget.getBoundingClientRect();
     x.set((event.clientX - bounds.left) / bounds.width - 0.5);
     y.set((event.clientY - bounds.top) / bounds.height - 0.5);
@@ -32,7 +41,9 @@ function TiltCard({
 
   return (
     <motion.div
-      onMouseMove={handleMouseMove}
+      onPointerMove={(event) => {
+        if (event.pointerType === "mouse") handleMouseMove(event);
+      }}
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
       whileHover={whileHover}

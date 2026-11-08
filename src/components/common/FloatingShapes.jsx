@@ -1,4 +1,10 @@
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 
 function Shape({ className, style, delay = 0, floatClass = "animate-float-slow" }) {
   return (
@@ -17,7 +23,10 @@ function FloatingShapes() {
   const rotateX = useTransform(springY, [-40, 40], [8, -8]);
   const rotateY = useTransform(springX, [-40, 40], [-8, 8]);
 
+  const reduceMotion = useReducedMotion();
+
   const handleMouseMove = (event) => {
+    if (reduceMotion || event.pointerType !== "mouse") return;
     const bounds = event.currentTarget.getBoundingClientRect();
     x.set(event.clientX - bounds.left - bounds.width / 2);
     y.set(event.clientY - bounds.top - bounds.height / 2);
@@ -30,7 +39,7 @@ function FloatingShapes() {
 
   return (
     <div
-      onMouseMove={handleMouseMove}
+      onPointerMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       className="perspective-container pointer-events-auto absolute inset-0 -z-10 overflow-hidden"
       aria-hidden="true"
