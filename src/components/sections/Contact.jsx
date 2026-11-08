@@ -5,13 +5,14 @@ import Container from "../common/Container";
 import SectionTitle from "../common/SectionTitle";
 import Button from "../common/Button";
 import { GithubIcon, LinkedinIcon } from "../common/BrandIcons";
+import { displayUrl, profile } from "../../content";
 
 const contactLinks = [
-  { label: "ratheeshk2505@gmail.com", href: "mailto:ratheeshk2505@gmail.com", icon: Mail },
-  { label: "linkedin.com/in/ratheeshk2505", href: "https://linkedin.com/in/ratheeshk2505", icon: LinkedinIcon },
-  { label: "github.com/ratheeshk2505", href: "https://github.com/ratheeshk2505", icon: GithubIcon },
-  { label: "Kottayam, Kerala", href: undefined, icon: MapPin },
-];
+  profile.email && { label: profile.email, href: `mailto:${profile.email}`, icon: Mail },
+  profile.linkedin && { label: displayUrl(profile.linkedin), href: profile.linkedin, icon: LinkedinIcon },
+  profile.github && { label: displayUrl(profile.github), href: profile.github, icon: GithubIcon },
+  profile.location && { label: profile.location, href: undefined, icon: MapPin },
+].filter(Boolean);
 
 const inputClasses =
   "w-full border-b border-border bg-transparent py-2 text-text-primary placeholder:text-text-secondary focus-visible:border-accent focus-visible:outline-none";
@@ -29,7 +30,7 @@ function Contact() {
     event.preventDefault();
     const subject = encodeURIComponent(`Portfolio inquiry from ${form.name}`);
     const body = encodeURIComponent(`${form.message}\n\n— ${form.name} (${form.email})`);
-    window.location.href = `mailto:ratheeshk2505@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
     setSent(true);
   };
 
@@ -38,7 +39,7 @@ function Contact() {
       <Container>
         <SectionTitle
           title="Let's talk"
-          subtitle="Open to new roles and interesting problems. The fastest way to reach me is email."
+          subtitle={profile.contactIntro}
         />
 
         <div className="grid gap-12 md:grid-cols-2 md:gap-16">
@@ -129,8 +130,8 @@ function Contact() {
             {sent && (
               <p className="text-sm text-text-secondary" role="status">
                 Opening your email app. If nothing opened, email me directly at{" "}
-                <a href="mailto:ratheeshk2505@gmail.com" className="text-accent underline">
-                  ratheeshk2505@gmail.com
+                <a href={`mailto:${profile.email}`} className="text-accent underline">
+                  {profile.email}
                 </a>
                 .
               </p>

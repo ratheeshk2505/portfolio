@@ -1,0 +1,37 @@
+{
+  "name": "Ratheesh K",
+  "role": "Senior Software Engineer",
+  "seoDescription": "Senior Software Engineer specializing in Angular, React, React Native, and NestJS. Experienced in building scalable web applications and full-stack solutions.",
+  "skillsSummary": "Angular, React, NestJS",
+  "greeting": "Hi, I'm",
+  "heroIntro": "Senior Software Engineer specializing in Angular and React, with hands-on experience in React Native and NestJS. I build scalable, high-performance web applications with a strong focus on clean architecture and usability.",
+  "heroDetails": [
+    "Senior Software Engineer, ex-Beinex Consulting",
+    "Based in Kottayam, Kerala"
+  ],
+  "heroBadge": "web developer ~ 2026",
+  "photo": "/Ratheesh-K.jpg",
+  "about": [
+    "I'm a Senior Software Engineer with several years of professional frontend experience, specializing in Angular and React, and now extending into React Native and NestJS. Most of my work has been building scalable, high-performance web applications — from role-based dashboards to enterprise assessment platforms — with a strong focus on TypeScript, RxJS, and REST API integration.",
+    "I hold a B.Tech in Electronics & Communication Engineering from CUSAT University, and moved into frontend engineering early in my career. I care about responsive, maintainable UI and about building components other engineers can actually reuse."
+  ],
+  "strengths": [
+    {
+      "title": "Angular-first, framework-fluent",
+      "detail": "Primary depth in Angular (12 through 20) with hands-on React experience, so I can move into whichever stack a project already runs on."
+    },
+    {
+      "title": "Performance-minded",
+      "detail": "Lazy loading, OnPush change detection, and reusable component libraries are default habits, not afterthoughts — they've cut load times and dev time on past projects."
+    },
+    {
+      "title": "Agile collaboration",
+      "detail": "Comfortable working inside Scrum teams — sprint planning, code reviews, and release cycles — alongside designers and backend engineers."
+    }
+  ],
+  "contactIntro": "Open to new roles and interesting problems. The fastest way to reach me is email.",
+  "email": "ratheeshk2505@gmail.com",
+  "linkedin": "https://linkedin.com/in/ratheeshk2505",
+  "github": "https://github.com/ratheeshk2505",
+  "location": "Kottayam, Kerala"
+}

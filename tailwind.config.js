@@ -18,9 +18,10 @@ export default {
         "accent-soft": "var(--accent-soft)",
       },
       fontFamily: {
-        display: ["'Fraunces'", "serif"],
-        sans: ["'Inter'", "system-ui", "sans-serif"],
-        mono: ["'JetBrains Mono'", "monospace"],
+        // Set per template in src/index.css
+        display: ["var(--font-display)"],
+        sans: ["var(--font-sans)"],
+        mono: ["var(--font-mono)"],
       },
       maxWidth: {
         content: "72rem",

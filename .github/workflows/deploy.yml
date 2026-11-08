@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [develop, main]
 
+# Only one deploy at a time; a newer push (e.g. several quick CMS saves) cancels the older run.
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest

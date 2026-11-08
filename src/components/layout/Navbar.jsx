@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import Container from "../common/Container";
 import ThemeToggle from "../common/ThemeToggle";
+import { profile } from "../../content";
 
 const links = [
   { id: "home", label: "Home" },
@@ -65,7 +66,7 @@ function Navbar({ theme, toggleTheme }) {
             onClick={handleNavClick("home")}
             className="font-display text-lg text-text-primary"
           >
-            Ratheesh K
+            {profile.name}
           </a>
 
           <ul className="hidden items-center gap-8 md:flex">

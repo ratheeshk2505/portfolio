@@ -1,7 +1,7 @@
 import Container from "../common/Container";
 import SectionTitle from "../common/SectionTitle";
 import ProjectCard from "../cards/ProjectCard";
-import projects from "../../data/projects";
+import { projects } from "../../content";
 
 function Projects() {
   return (
@@ -14,7 +14,7 @@ function Projects() {
 
         <div className="grid gap-6 sm:grid-cols-2">
           {projects.map((project) => (
-            <ProjectCard key={project.id} {...project} />
+            <ProjectCard key={project.title} {...project} />
           ))}
         </div>
       </Container>

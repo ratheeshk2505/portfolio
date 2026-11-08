@@ -1,12 +1,13 @@
 import { ArrowUp, Mail } from "lucide-react";
 import Container from "../common/Container";
 import { GithubIcon, LinkedinIcon } from "../common/BrandIcons";
+import { profile } from "../../content";
 
 const socials = [
-  { label: "Email", href: "mailto:ratheeshk2505@gmail.com", icon: Mail },
-  { label: "LinkedIn", href: "https://linkedin.com/in/ratheeshk2505", icon: LinkedinIcon },
-  { label: "GitHub", href: "https://github.com/ratheeshk2505", icon: GithubIcon },
-];
+  profile.email && { label: "Email", href: `mailto:${profile.email}`, icon: Mail },
+  profile.linkedin && { label: "LinkedIn", href: profile.linkedin, icon: LinkedinIcon },
+  profile.github && { label: "GitHub", href: profile.github, icon: GithubIcon },
+].filter(Boolean);
 
 function Footer() {
   const scrollToTop = () => {
@@ -17,9 +18,9 @@ function Footer() {
     <footer className="border-t border-border">
       <Container className="flex flex-col items-center gap-6 py-10 md:flex-row md:justify-between">
         <div className="text-center md:text-left">
-          <p className="font-display text-text-primary">Ratheesh K</p>
+          <p className="font-display text-text-primary">{profile.name}</p>
           <p className="mt-1 text-xs text-text-secondary">
-            © {new Date().getFullYear()} Ratheesh K. All rights reserved.
+            © {new Date().getFullYear()} {profile.name}. All rights reserved.
           </p>
         </div>
 

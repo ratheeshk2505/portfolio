@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { GithubIcon } from "../common/BrandIcons";
 import TiltCard from "../common/TiltCard";
+import { activeTemplate } from "../../templates";
 
 function ProjectCard({ title, description, technologies, github, demo }) {
   return (
@@ -13,7 +14,8 @@ function ProjectCard({ title, description, technologies, github, demo }) {
       className="h-full"
     >
       <TiltCard
-        tiltAmount={6}
+        tiltAmount={activeTemplate.effects3d ? 6 : 0}
+        glare={activeTemplate.effects3d}
         whileHover={{ y: -4 }}
         className="group surface-3d flex h-full flex-col justify-between rounded-md border border-border bg-surface p-6 transition-colors duration-200 hover:border-accent"
       >

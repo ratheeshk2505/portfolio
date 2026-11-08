@@ -2,6 +2,8 @@
 
 A modern, responsive personal portfolio built with React, Vite, Tailwind CSS, and Framer Motion. Includes a full light/dark theme system and a modular, data-driven component structure.
 
+> 📘 **Full step-by-step guide** (admin panel, templates, deploying, troubleshooting): [docs/PORTFOLIO_GUIDE.md](docs/PORTFOLIO_GUIDE.md)
+
 ## Stack
 
 - React 19 + Vite
@@ -36,24 +38,60 @@ src/
 │   ├── layout/        # Navbar, Footer
 │   ├── sections/       # Hero, About, Experience, Skills, Projects, Contact
 │   └── cards/         # ExperienceCard, ProjectCard, SkillBadge
-├── data/             # experience.js, projects.js, skills.js — edit these to update content
+├── content/          # profile.json, experience.json, projects.json, skills.json, site.json — all site content
 ├── hooks/            # useTheme.js
 ├── App.jsx
 ├── main.jsx
 └── index.css         # theme tokens (CSS variables) and base styles
 ```
 
-## Customizing content
+## Updating content (admin panel)
 
-You shouldn't need to touch any component code to update the portfolio's content:
+All text on the site lives in JSON files in `src/content/`. The component code doesn't need to change for content updates.
 
-- **Name, title, and intro** — `src/components/sections/Hero.jsx`
-- **Bio and strengths** — `src/components/sections/About.jsx`
-- **Work history** — `src/data/experience.js`
-- **Skills** — `src/data/skills.js`
-- **Projects** — `src/data/projects.js`
-- **Contact links and email** — `src/components/sections/Contact.jsx` and `src/components/layout/Footer.jsx`
-- **Site title and meta description** — `index.html`
+| File | What it holds |
+| --- | --- |
+| `profile.json` | Name, job title, hero text, photo, About paragraphs, strengths, contact links, and the search/share description |
+| `experience.json` | Work history |
+| `projects.json` | Projects |
+| `skills.json` | Skill groups |
+| `site.json` | Which design template is active |
+
+The page title, meta tags and structured data in `index.html` are filled from `profile.json` at build time (see the `profileMeta` plugin in `vite.config.js`).
+
+### Using the admin panel
+
+The site includes [Sveltia CMS](https://sveltiacms.app/), a Git-based CMS, at:
+
+**https://ratheeshk2505.github.io/portfolio/admin/**
+
+1. Create a [fine-grained GitHub token](https://github.com/settings/personal-access-tokens/new): give it access to **only** the `ratheeshk2505/portfolio` repository and set **Contents: Read and write**. Choose an expiry date.
+2. Open the admin URL, click **Sign In Using Access Token** and paste the token. It is stored only in that browser.
+3. Edit and save. Each save is a commit to `develop`, which triggers the GitHub Pages deploy; the change is live in about 1–2 minutes.
+
+Security: there is no password in the site's code. Only GitHub accounts with write access to the repository (and a valid token) can save anything. Keep 2FA on your GitHub account, sign out of the CMS on shared computers, and revoke the token on GitHub if a device is lost.
+
+After editing in the CMS, run `git pull` before changing files locally.
+
+To edit without GitHub (local only), run `npm run build && npm run preview`, open `http://localhost:4173/portfolio/admin/` in Chrome or Edge and choose **Work with Local Repository**, then commit and push as usual.
+
+The CMS configuration (fields, labels, sign-in) is in `public/admin/config.yml`. Uploaded images go to `public/images/`.
+
+## Design templates
+
+There are three designs to choose from:
+
+| Template | Look |
+| --- | --- |
+| **Classic** | Warm, editorial serif headings, 3D tilt cards and floating shapes |
+| **Minimal** | Clean, centered, sans-serif layout with a blue accent and no 3D effects |
+| **Terminal** | Developer style: monospace headings, green accents and a code-window hero |
+
+Each one works in both light and dark mode.
+
+- **Choose one:** in the admin panel, open **Profile → Site design** and pick a template (stored in `src/content/site.json`). Saving redeploys the site.
+- **Preview without changing anything:** add `?template=minimal`, `?template=terminal` or `?template=classic` to the site URL.
+- **Customize:** colors and fonts for each template are in `src/index.css` under `[data-template="…"]`. The hero layouts are in `src/components/sections/hero/`, and the list of templates is in `src/templates/index.js`.
 
 ## Customizing the theme
 

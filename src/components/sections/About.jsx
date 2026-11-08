@@ -1,24 +1,7 @@
 import { motion } from "framer-motion";
 import Container from "../common/Container";
 import SectionTitle from "../common/SectionTitle";
-
-const strengths = [
-  {
-    title: "Angular-first, framework-fluent",
-    detail:
-      "Primary depth in Angular (12 through 20) with hands-on React experience, so I can move into whichever stack a project already runs on.",
-  },
-  {
-    title: "Performance-minded",
-    detail:
-      "Lazy loading, OnPush change detection, and reusable component libraries are default habits, not afterthoughts — they've cut load times and dev time on past projects.",
-  },
-  {
-    title: "Agile collaboration",
-    detail:
-      "Comfortable working inside Scrum teams — sprint planning, code reviews, and release cycles — alongside designers and backend engineers.",
-  },
-];
+import { profile } from "../../content";
 
 function About() {
   return (
@@ -37,21 +20,9 @@ function About() {
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="space-y-4 text-text-secondary leading-relaxed"
           >
-            <p>
-              I'm a Senior Software Engineer with several years of
-              professional frontend experience, specializing in Angular and
-              React, and now extending into React Native and NestJS. Most of my work has been building scalable,
-              high-performance web applications — from role-based dashboards
-              to enterprise assessment platforms — with a strong focus on
-              TypeScript, RxJS, and REST API integration.
-            </p>
-            <p>
-              I hold a B.Tech in Electronics &amp; Communication Engineering
-              from CUSAT University, and moved into frontend engineering
-              early in my career. I care about responsive, maintainable UI
-              and about building components other engineers can actually
-              reuse.
-            </p>
+            {profile.about?.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
           </motion.div>
 
           <motion.div
@@ -61,7 +32,7 @@ function About() {
             transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
             className="space-y-8"
           >
-            {strengths.map((item) => (
+            {profile.strengths?.map((item) => (
               <div key={item.title} className="border-l border-border pl-5">
                 <h3 className="text-text-primary">{item.title}</h3>
                 <p className="mt-1.5 text-sm text-text-secondary leading-relaxed">

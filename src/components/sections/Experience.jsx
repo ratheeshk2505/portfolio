@@ -1,7 +1,7 @@
 import Container from "../common/Container";
 import SectionTitle from "../common/SectionTitle";
 import ExperienceCard from "../cards/ExperienceCard";
-import experience from "../../data/experience";
+import { experience } from "../../content";
 
 function Experience() {
   return (
@@ -14,7 +14,7 @@ function Experience() {
 
         <div>
           {experience.map((item) => (
-            <ExperienceCard key={item.id} {...item} />
+            <ExperienceCard key={`${item.company}-${item.duration}`} {...item} />
           ))}
         </div>
       </Container>
